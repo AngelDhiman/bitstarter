@@ -27,18 +27,6 @@ var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
 
-var sys = require('util'),
-    rest = require('./restler');
-
-rest.get('http://safe-hamlet-8832.herokuapp.com').on('complete', function(result) {
-  if (result instanceof Error) {
-    sys.puts('Error: ' + result.message);
-    this.retry(5000); // try again after 5 sec
-  } else {
-    sys.puts(result);
-  }
-});
-
 var assertFileExists = function(infile) {
     var instr = infile.toString();
     if(!fs.existsSync(instr)) {
